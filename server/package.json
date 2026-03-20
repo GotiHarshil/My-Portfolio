@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-server",
+  "version": "1.0.0",
+  "description": "Express API server for portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
+    "seed": "node data/seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "harshil-goti-portfolio": "file:..",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.5.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

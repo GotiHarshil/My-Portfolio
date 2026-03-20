@@ -1,0 +1,70 @@
+.exp__timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+.exp__timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), var(--border));
+}
+
+.exp__item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.exp__item::before {
+  content: "";
+  position: absolute;
+  left: -3rem;
+  top: 8px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+}
+.exp__item:first-child::before {
+  background: var(--accent);
+}
+
+.exp__role {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.exp__company {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+.exp__date {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.exp__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.exp__points li {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.exp__points li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}

@@ -1,0 +1,23 @@
+{
+  "name": "harshil-goti-portfolio",
+  "version": "1.0.0",
+  "description": "Harshil Goti — Full-Stack Portfolio (MERN + MVC)",
+  "scripts": {
+    "server": "node server/server.js",
+    "server:dev": "npx nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "dev": "npx concurrently \"npm run server:dev\" \"npm run client\"",
+    "install:server": "npm install --prefix server",
+    "install:client": "npm install --prefix client",
+    "install:all": "npm install && npm run install:server && npm run install:client",
+    "seed": "node server/data/seed.js",
+    "build": "npm run build --prefix client",
+    "start": "node server/server.js"
+  },
+  "keywords": ["portfolio", "mern", "react", "node", "express", "mongodb"],
+  "author": "Harshil Goti",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

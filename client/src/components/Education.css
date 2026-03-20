@@ -1,0 +1,47 @@
+.education {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.edu__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.edu__card {
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.edu__card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.edu__degree {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.edu__school {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+.edu__meta {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  display: flex;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .edu__grid {
+    grid-template-columns: 1fr;
+  }
+}
