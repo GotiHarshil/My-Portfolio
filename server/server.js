@@ -50,16 +50,24 @@ if (process.env.NODE_ENV === "production") {
 // ─── Global error handler ───
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ message: "Something went wrong!", error: err.message });
+  res
+    .status(500)
+    .json({ message: "Something went wrong!", error: err.message });
 });
 
 // ─── Start server ───
 const startServer = async () => {
   await connectDB();
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📦 Environment: ${process.env.NODE_ENV || "development"}`);
-  });
+  if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  } else {
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`📦 Environment: ${process.env.NODE_ENV || "development"}`);
+    });
+  }
 };
 
 startServer();
+
+module.exports = app;
