@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>Designed & Built by Harshil Goti — {new Date().getFullYear()}</p>
+      <p>Designed & Built by Harshil Gohti — {new Date().getFullYear()}</p>
     </footer>
   );
 };
