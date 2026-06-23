@@ -100,6 +100,7 @@ const seedData = async () => {
         "Implemented secure authentication and role-based access control using Firebase for protected vendor and customer workflows.",
         "Developed RESTful APIs consumed by a React frontend with Redux-based state management.",
       ],
+      liveUrl: "https://food-vendor-ecommerce-l4rtlc4pq.vercel.app/",
       featured: true,
       order: 0,
     },

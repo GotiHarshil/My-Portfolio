@@ -76,12 +76,12 @@ const Contact = ({ profile }) => {
             </button>
           </div>
         ) : (
-          <div className="contact__form-container" onSubmit={handleSubmit}>
+          <div className="contact__form-container">
             <div className="contact__form-header">
               <Send size={18} />
               <span>Send me a message</span>
             </div>
-            <form className="contact__form">
+            <form className="contact__form" onSubmit={handleSubmit}>
               <div className="contact__form-row">
                 <div className="contact__field">
                   <label htmlFor="name">Name</label>
