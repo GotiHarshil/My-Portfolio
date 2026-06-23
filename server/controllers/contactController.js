@@ -1,4 +1,5 @@
 const Contact = require("../models/Contact");
+const { sendContactNotification } = require("../config/mailer");
 
 // @desc    Submit a contact message
 // @route   POST /api/contact
@@ -11,6 +12,13 @@ const submitMessage = async (req, res) => {
     }
 
     const contact = await Contact.create({ name, email, subject, message });
+
+    try {
+      await sendContactNotification({ name, email, subject, message });
+    } catch (emailError) {
+      console.error("Failed to send contact notification email:", emailError.message);
+    }
+
     res.status(201).json({ message: "Message sent successfully!", contact });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });

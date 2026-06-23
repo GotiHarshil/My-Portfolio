@@ -98,6 +98,14 @@ PORT=5000
 NODE_ENV=development
 MONGO_URI=mongodb://localhost:27017/harshil_portfolio
 CLIENT_URL=http://localhost:3000
+
+# Email notifications for the contact form (Gmail SMTP + App Password)
+EMAIL_USER=your-gmail@gmail.com
+EMAIL_PASS=your-16-char-app-password
+CONTACT_RECEIVER_EMAIL=where-you-want-messages@gmail.com
+
+# Required to view submitted contact messages via GET /api/contact
+ADMIN_API_KEY=some-long-random-secret
 ```
 
 Or use a **MongoDB Atlas** connection string for cloud hosting.
