@@ -1,7 +1,19 @@
 .footer {
   text-align: center;
-  padding: 2rem 4rem;
+  padding: 2.5rem 4rem;
   border-top: 1px solid var(--border);
-  font-size: 0.78rem;
+  font-size: 0.73rem;
   color: var(--text-dim);
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  background: var(--surface);
+  position: relative;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 240px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }

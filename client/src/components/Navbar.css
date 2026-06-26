@@ -8,22 +8,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(20px);
-  background: rgba(10, 10, 11, 0.7);
-  border-bottom: 1px solid rgba(42, 42, 48, 0.3);
-  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(30, 58, 95, 0.4);
+  transition: padding 0.3s ease;
+}
+/* backdrop on a pseudo-element so backdrop-filter doesn't create a
+   containing block that traps position:fixed children (mobile overlay) */
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(24px);
+  background: rgba(3, 7, 18, 0.75);
+  z-index: -1;
+  transition: background 0.3s ease;
 }
 .navbar--scrolled {
   padding: 0.6rem 2rem;
-  background: rgba(10, 10, 11, 0.92);
+}
+.navbar--scrolled::before {
+  background: rgba(3, 7, 18, 0.95);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
 }
 
 .navbar__logo {
   font-family: var(--mono);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--accent);
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 .navbar__logo span {
   color: var(--text-dim);
@@ -35,9 +48,9 @@
   list-style: none;
 }
 .navbar__links a {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--text-dim);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 0.3s;
   position: relative;
@@ -49,11 +62,11 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent);
-  transition: width 0.3s;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.3s var(--ease);
 }
 .navbar__links a:hover {
-  color: var(--text);
+  color: var(--accent2);
 }
 .navbar__links a:hover::after {
   width: 100%;
@@ -76,20 +89,26 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(10, 10, 11, 0.97);
+    background: rgba(3, 7, 18, 0.98);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem;
+    backdrop-filter: blur(20px);
   }
   .navbar__links--open {
     display: flex;
   }
   .navbar__links a {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    color: var(--text);
+  }
+  .navbar__links a:hover {
+    color: var(--accent);
   }
   .navbar__hamburger {
     display: block;
     z-index: 101;
+    color: var(--accent);
   }
 }
