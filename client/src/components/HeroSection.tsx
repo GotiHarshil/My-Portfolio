@@ -52,7 +52,7 @@ export default function HeroSection() {
       <motion.div
         {...fade(0.6, 30)}
         className="absolute z-10
-          left-1/2 -translate-x-1/2 w-[48vw] top-1/2 -translate-y-1/2
+          left-1/2 -translate-x-1/2 w-[48vw] top-[38%] -translate-y-1/2
           sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px]
           md:w-[440px] lg:w-[520px]"
       >
