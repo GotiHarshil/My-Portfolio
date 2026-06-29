@@ -19,7 +19,7 @@ export default function HeroSection() {
       {/* Navbar */}
       <motion.nav
         {...fade(0, -20)}
-        className="flex justify-between items-center
+        className="relative z-10 flex justify-between items-center
           px-6 md:px-10 pt-6 md:pt-8"
       >
         {NAV_LINKS.map((link) => (
@@ -36,7 +36,7 @@ export default function HeroSection() {
       </motion.nav>
 
       {/* Hero Heading */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden relative z-10">
         <motion.h1
           {...fade(0.15, 40)}
           className="hero-heading font-black uppercase tracking-tight leading-none
@@ -48,24 +48,24 @@ export default function HeroSection() {
         </motion.h1>
       </div>
 
-      {/* Portrait — centered absolutely */}
+      {/* Portrait — full-bleed behind text on mobile, centred above fold on sm+ */}
       <motion.div
         {...fade(0.6, 30)}
-        className="absolute left-1/2 -translate-x-1/2 z-10
-          w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]
-          top-1/2 -translate-y-1/2
-          sm:top-auto sm:translate-y-0 sm:bottom-0"
+        className="absolute inset-0 z-0
+          sm:inset-auto sm:z-10 sm:bottom-0
+          sm:left-1/2 sm:-translate-x-1/2 sm:w-[360px]
+          md:w-[440px] lg:w-[520px]"
       >
-        <Magnet padding={150} strength={3}>
-          <div className="relative">
+        <Magnet padding={150} strength={3} className="h-full sm:h-auto">
+          <div className="relative h-full sm:h-auto">
             <img
               src="/harshil.png"
               alt="Harshil Goti"
-              className="w-full object-contain"
+              className="w-full h-full object-cover object-top
+                sm:h-auto sm:object-contain sm:object-center"
               style={{ mixBlendMode: 'luminosity' }}
               loading="eager"
             />
-            {/* Fade portrait into dark background */}
             <div
               className="absolute bottom-0 left-0 right-0"
               style={{
@@ -80,10 +80,9 @@ export default function HeroSection() {
 
       {/* Bottom bar */}
       <div
-        className="flex justify-between items-end mt-auto
+        className="relative z-20 flex justify-between items-end mt-auto
           px-6 md:px-10 pb-7 sm:pb-8 md:pb-10"
       >
-        {/* Left text */}
         <motion.p
           {...fade(0.35, 20)}
           className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug
@@ -93,7 +92,6 @@ export default function HeroSection() {
           a full-stack engineer driven by building performant, user-focused web applications
         </motion.p>
 
-        {/* Contact button */}
         <motion.div {...fade(0.5, 20)}>
           <ContactButton />
         </motion.div>

@@ -55,7 +55,7 @@ export default function MarqueeSection() {
     >
       {/* Row 1 — moves right */}
       <div
-        className="flex gap-3 mb-3"
+        className="flex gap-2 sm:gap-3 mb-2 sm:mb-3"
         style={{
           transform: `translateX(${offset - 200}px)`,
           willChange: 'transform',
@@ -67,15 +67,15 @@ export default function MarqueeSection() {
             src={src}
             alt=""
             loading="lazy"
-            className="rounded-2xl object-cover flex-shrink-0"
-            style={{ width: 420, height: 270 }}
+            className="rounded-xl sm:rounded-2xl object-cover flex-shrink-0
+              w-[180px] h-[116px] sm:w-[300px] sm:h-[193px] md:w-[420px] md:h-[270px]"
           />
         ))}
       </div>
 
       {/* Row 2 — moves left */}
       <div
-        className="flex gap-3"
+        className="flex gap-2 sm:gap-3"
         style={{
           transform: `translateX(${-(offset - 200)}px)`,
           willChange: 'transform',
@@ -87,8 +87,8 @@ export default function MarqueeSection() {
             src={src}
             alt=""
             loading="lazy"
-            className="rounded-2xl object-cover flex-shrink-0"
-            style={{ width: 420, height: 270 }}
+            className="rounded-xl sm:rounded-2xl object-cover flex-shrink-0
+              w-[180px] h-[116px] sm:w-[300px] sm:h-[193px] md:w-[420px] md:h-[270px]"
           />
         ))}
       </div>
