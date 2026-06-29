@@ -48,34 +48,34 @@ export default function HeroSection() {
         </motion.h1>
       </div>
 
-      {/* Portrait */}
-      <motion.div
-        {...fade(0.6, 30)}
-        className="absolute z-10
-          left-1/2 -translate-x-1/2 w-[48vw] top-[38%] -translate-y-1/2
-          sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px]
-          md:w-[440px] lg:w-[520px]"
+      {/* Portrait — outer div owns all positioning/transforms; motion.div only fades */}
+      <div className="absolute z-10
+        left-1/2 -translate-x-1/2 w-[86vw] top-[48%] -translate-y-1/2
+        sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px]
+        md:w-[440px] lg:w-[520px]"
       >
-        <Magnet padding={150} strength={3}>
-          <div className="relative">
-            <img
-              src="/harshil.png"
-              alt="Harshil Goti"
-              className="w-full object-contain"
-              style={{ mixBlendMode: 'luminosity' }}
-              loading="eager"
-            />
-            <div
-              className="absolute bottom-0 left-0 right-0"
-              style={{
-                height: '35%',
-                background: 'linear-gradient(to top, #0C0C0C 30%, transparent)',
-                pointerEvents: 'none',
-              }}
-            />
-          </div>
-        </Magnet>
-      </motion.div>
+        <motion.div {...fade(0.6, 30)}>
+          <Magnet padding={150} strength={3}>
+            <div className="relative">
+              <img
+                src="/harshil.png"
+                alt="Harshil Goti"
+                className="w-full object-contain"
+                style={{ mixBlendMode: 'luminosity' }}
+                loading="eager"
+              />
+              <div
+                className="absolute bottom-0 left-0 right-0"
+                style={{
+                  height: '35%',
+                  background: 'linear-gradient(to top, #0C0C0C 30%, transparent)',
+                  pointerEvents: 'none',
+                }}
+              />
+            </div>
+          </Magnet>
+        </motion.div>
+      </div>
 
       {/* Bottom bar */}
       <div
