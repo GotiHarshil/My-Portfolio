@@ -48,21 +48,20 @@ export default function HeroSection() {
         </motion.h1>
       </div>
 
-      {/* Portrait — full-bleed behind text on mobile, centred above fold on sm+ */}
+      {/* Portrait */}
       <motion.div
         {...fade(0.6, 30)}
-        className="absolute inset-0 z-0
-          sm:inset-auto sm:z-10 sm:bottom-0
-          sm:left-1/2 sm:-translate-x-1/2 sm:w-[360px]
+        className="absolute z-10
+          left-1/2 -translate-x-1/2 w-[48vw] top-1/2 -translate-y-1/2
+          sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px]
           md:w-[440px] lg:w-[520px]"
       >
-        <Magnet padding={150} strength={3} className="h-full sm:h-auto">
-          <div className="relative h-full sm:h-auto">
+        <Magnet padding={150} strength={3}>
+          <div className="relative">
             <img
               src="/harshil.png"
               alt="Harshil Goti"
-              className="w-full h-full object-cover object-top
-                sm:h-auto sm:object-contain sm:object-center"
+              className="w-full object-contain"
               style={{ mixBlendMode: 'luminosity' }}
               loading="eager"
             />
