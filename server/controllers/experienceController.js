@@ -1,34 +1,32 @@
 const Experience = require("../models/Experience");
 
-// @desc    Get all experiences (sorted by order)
-// @route   GET /api/experiences
 const getExperiences = async (req, res) => {
   try {
     const experiences = await Experience.find().sort({ order: 1 });
     res.json(experiences);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Create a new experience
-// @route   POST /api/experiences
 const createExperience = async (req, res) => {
   try {
-    const experience = await Experience.create(req.body);
+    const { role, company, location, startDate, endDate, points, order } = req.body;
+    const experience = await Experience.create({ role, company, location, startDate, endDate, points, order });
     res.status(201).json(experience);
   } catch (error) {
-    res.status(400).json({ message: "Validation error", error: error.message });
+    console.error(error);
+    res.status(400).json({ message: "Validation error" });
   }
 };
 
-// @desc    Update an experience
-// @route   PUT /api/experiences/:id
 const updateExperience = async (req, res) => {
   try {
+    const { role, company, location, startDate, endDate, points, order } = req.body;
     const experience = await Experience.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { role, company, location, startDate, endDate, points, order },
       { new: true, runValidators: true }
     );
     if (!experience) {
@@ -36,12 +34,11 @@ const updateExperience = async (req, res) => {
     }
     res.json(experience);
   } catch (error) {
-    res.status(400).json({ message: "Update error", error: error.message });
+    console.error(error);
+    res.status(400).json({ message: "Update error" });
   }
 };
 
-// @desc    Delete an experience
-// @route   DELETE /api/experiences/:id
 const deleteExperience = async (req, res) => {
   try {
     const experience = await Experience.findByIdAndDelete(req.params.id);
@@ -50,13 +47,9 @@ const deleteExperience = async (req, res) => {
     }
     res.json({ message: "Experience deleted" });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-module.exports = {
-  getExperiences,
-  createExperience,
-  updateExperience,
-  deleteExperience,
-};
+module.exports = { getExperiences, createExperience, updateExperience, deleteExperience };

@@ -6,10 +6,11 @@ const {
   updateExperience,
   deleteExperience,
 } = require("../controllers/experienceController");
+const requireAdminKey = require("../middleware/adminAuth");
 
 router.get("/", getExperiences);
-router.post("/", createExperience);
-router.put("/:id", updateExperience);
-router.delete("/:id", deleteExperience);
+router.post("/", requireAdminKey, createExperience);
+router.put("/:id", requireAdminKey, updateExperience);
+router.delete("/:id", requireAdminKey, deleteExperience);
 
 module.exports = router;

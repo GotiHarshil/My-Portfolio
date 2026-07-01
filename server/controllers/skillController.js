@@ -1,34 +1,32 @@
 const Skill = require("../models/Skill");
 
-// @desc    Get all skill groups
-// @route   GET /api/skills
 const getSkills = async (req, res) => {
   try {
     const skills = await Skill.find().sort({ order: 1 });
     res.json(skills);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Create a skill group
-// @route   POST /api/skills
 const createSkill = async (req, res) => {
   try {
-    const skill = await Skill.create(req.body);
+    const { category, icon, items, order } = req.body;
+    const skill = await Skill.create({ category, icon, items, order });
     res.status(201).json(skill);
   } catch (error) {
-    res.status(400).json({ message: "Validation error", error: error.message });
+    console.error(error);
+    res.status(400).json({ message: "Validation error" });
   }
 };
 
-// @desc    Update a skill group
-// @route   PUT /api/skills/:id
 const updateSkill = async (req, res) => {
   try {
+    const { category, icon, items, order } = req.body;
     const skill = await Skill.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { category, icon, items, order },
       { new: true, runValidators: true }
     );
     if (!skill) {
@@ -36,12 +34,11 @@ const updateSkill = async (req, res) => {
     }
     res.json(skill);
   } catch (error) {
-    res.status(400).json({ message: "Update error", error: error.message });
+    console.error(error);
+    res.status(400).json({ message: "Update error" });
   }
 };
 
-// @desc    Delete a skill group
-// @route   DELETE /api/skills/:id
 const deleteSkill = async (req, res) => {
   try {
     const skill = await Skill.findByIdAndDelete(req.params.id);
@@ -50,7 +47,8 @@ const deleteSkill = async (req, res) => {
     }
     res.json({ message: "Skill group deleted" });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 

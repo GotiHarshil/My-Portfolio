@@ -7,11 +7,12 @@ const {
   updateProject,
   deleteProject,
 } = require("../controllers/projectController");
+const requireAdminKey = require("../middleware/adminAuth");
 
 router.get("/", getProjects);
 router.get("/featured", getFeaturedProjects);
-router.post("/", createProject);
-router.put("/:id", updateProject);
-router.delete("/:id", deleteProject);
+router.post("/", requireAdminKey, createProject);
+router.put("/:id", requireAdminKey, updateProject);
+router.delete("/:id", requireAdminKey, deleteProject);
 
 module.exports = router;

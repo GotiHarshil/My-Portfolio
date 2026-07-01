@@ -5,9 +5,10 @@ const {
   createCertification,
   deleteCertification,
 } = require("../controllers/certificationController");
+const requireAdminKey = require("../middleware/adminAuth");
 
 router.get("/", getCertifications);
-router.post("/", createCertification);
-router.delete("/:id", deleteCertification);
+router.post("/", requireAdminKey, createCertification);
+router.delete("/:id", requireAdminKey, deleteCertification);
 
 module.exports = router;

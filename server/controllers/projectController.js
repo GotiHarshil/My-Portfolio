@@ -1,45 +1,42 @@
 const Project = require("../models/Project");
 
-// @desc    Get all projects (sorted by order)
-// @route   GET /api/projects
 const getProjects = async (req, res) => {
   try {
     const projects = await Project.find().sort({ order: 1 });
     res.json(projects);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Get featured projects only
-// @route   GET /api/projects/featured
 const getFeaturedProjects = async (req, res) => {
   try {
     const projects = await Project.find({ featured: true }).sort({ order: 1 });
     res.json(projects);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Create a project
-// @route   POST /api/projects
 const createProject = async (req, res) => {
   try {
-    const project = await Project.create(req.body);
+    const { title, subtitle, stack, description, liveUrl, githubUrl, image, featured, order } = req.body;
+    const project = await Project.create({ title, subtitle, stack, description, liveUrl, githubUrl, image, featured, order });
     res.status(201).json(project);
   } catch (error) {
-    res.status(400).json({ message: "Validation error", error: error.message });
+    console.error(error);
+    res.status(400).json({ message: "Validation error" });
   }
 };
 
-// @desc    Update a project
-// @route   PUT /api/projects/:id
 const updateProject = async (req, res) => {
   try {
+    const { title, subtitle, stack, description, liveUrl, githubUrl, image, featured, order } = req.body;
     const project = await Project.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { title, subtitle, stack, description, liveUrl, githubUrl, image, featured, order },
       { new: true, runValidators: true }
     );
     if (!project) {
@@ -47,12 +44,11 @@ const updateProject = async (req, res) => {
     }
     res.json(project);
   } catch (error) {
-    res.status(400).json({ message: "Update error", error: error.message });
+    console.error(error);
+    res.status(400).json({ message: "Update error" });
   }
 };
 
-// @desc    Delete a project
-// @route   DELETE /api/projects/:id
 const deleteProject = async (req, res) => {
   try {
     const project = await Project.findByIdAndDelete(req.params.id);
@@ -61,14 +57,9 @@ const deleteProject = async (req, res) => {
     }
     res.json({ message: "Project deleted" });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
-module.exports = {
-  getProjects,
-  getFeaturedProjects,
-  createProject,
-  updateProject,
-  deleteProject,
-};
+module.exports = { getProjects, getFeaturedProjects, createProject, updateProject, deleteProject };

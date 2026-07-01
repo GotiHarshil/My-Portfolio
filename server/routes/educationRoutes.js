@@ -6,10 +6,11 @@ const {
   updateEducation,
   deleteEducation,
 } = require("../controllers/educationController");
+const requireAdminKey = require("../middleware/adminAuth");
 
 router.get("/", getEducation);
-router.post("/", createEducation);
-router.put("/:id", updateEducation);
-router.delete("/:id", deleteEducation);
+router.post("/", requireAdminKey, createEducation);
+router.put("/:id", requireAdminKey, updateEducation);
+router.delete("/:id", requireAdminKey, deleteEducation);
 
 module.exports = router;
