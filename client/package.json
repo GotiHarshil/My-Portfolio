@@ -10,6 +10,10 @@
     "start": "vite"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/kanit": "^5.2.8",
     "axios": "^1.7.2",
     "framer-motion": "^12.38.0",
     "lucide-react": "^0.344.0",
