@@ -59,6 +59,25 @@ const seedData = async () => {
     ],
   });
 
+  // ── Experience ──
+  await Experience.insertMany([
+    {
+      role: "Software Engineer",
+      company: "SquareBit",
+      location: "Remote",
+      startDate: "May 2023",
+      endDate: "Jul 2024",
+      points: [
+        "Engineered backend services for 3+ client-facing MERN applications by collaborating directly with cross-functional teammates, translating client requirements into production code that shipped on schedule every time.",
+        "Designed and built 20+ RESTful API endpoints using Node.js, Express, and MongoDB, validating each via Postman before integration — replacing static content with real-time data flows.",
+        "Resolved 15+ production defects by partnering with design and QA teams, tightening issue-resolution turnaround while maintaining 99%+ uptime across all live client applications.",
+        "Collaborated with teammates using Git/GitHub branching and PR workflows to ship backend features without regressions, supporting parallel delivery across multiple client projects.",
+        "Communicated directly with clients to scope backend requirements and incorporate feedback, strengthening retention and enabling SquareBit to take on higher-complexity engagements.",
+      ],
+      order: 0,
+    },
+  ]);
+
   // ── Projects ──
   await Project.insertMany([
     {
