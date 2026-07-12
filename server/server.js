@@ -6,6 +6,7 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const connectDB = require("./config/db");
+const logVisitor = require("./middleware/visitorLogger");
 
 // Route imports
 const profileRoutes = require("./routes/profileRoutes");
@@ -39,6 +40,11 @@ app.use("/api/contact", contactRoutes);
 // ─── Health check ───
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+// ─── Visit logging ───
+app.get("/api/visit", logVisitor, (req, res) => {
+  res.status(204).end();
 });
 
 // ─── Serve React in production ───
