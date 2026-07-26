@@ -1,19 +1,37 @@
-export default function ContactButton() {
+import { motion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
+
+export default function ContactButton({
+  label = 'Contact Me',
+  href = 'mailto:harshilgoti01@gmail.com',
+}: {
+  label?: string
+  href?: string
+}) {
   return (
-    <a
-      href="mailto:harshilgoti01@gmail.com"
-      className="inline-block rounded-full font-medium uppercase tracking-widest text-white
+    <motion.a
+      href={href}
+      whileHover={{ scale: 1.035 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+      className="group inline-flex items-center gap-2 rounded-full font-medium uppercase
+        tracking-widest text-white cursor-pointer
         px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4
-        text-xs sm:text-sm md:text-base
-        transition-opacity duration-200 hover:opacity-80"
+        text-xs sm:text-sm md:text-base"
       style={{
-        background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
-        boxShadow: '0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1',
-        outline: '2px solid white',
+        background: 'var(--brand-gradient)',
+        boxShadow:
+          '0 4px 24px rgba(181, 1, 167, 0.28), inset 4px 4px 12px rgba(119, 33, 177, 0.9)',
+        outline: '2px solid rgba(255,255,255,0.92)',
         outlineOffset: '-3px',
       }}
     >
-      Contact Me
-    </a>
+      {label}
+      <ArrowUpRight
+        size={16}
+        aria-hidden="true"
+        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      />
+    </motion.a>
   )
 }

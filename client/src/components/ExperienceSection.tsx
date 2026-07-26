@@ -26,8 +26,7 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      style={{ background: '#0C0C0C' }}
+      className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -41,7 +40,16 @@ export default function ExperienceSection() {
       <div className="max-w-4xl mx-auto flex flex-col gap-6 sm:gap-8">
         {experiences.map((exp, i) => (
           <FadeIn key={exp._id} delay={i * 0.12} y={30}>
-            <div className="border border-[#D7E2EA]/15 rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 md:p-10 flex flex-col gap-5">
+            <div
+              className="rounded-[28px] sm:rounded-[36px] p-6 sm:p-8 md:p-10 flex flex-col gap-5
+                transition-colors duration-500 hover:border-[rgba(182,0,168,0.35)]"
+              style={{
+                background: 'rgba(23, 23, 27, 0.5)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                border: '1px solid var(--border)',
+              }}
+            >
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                 <div>

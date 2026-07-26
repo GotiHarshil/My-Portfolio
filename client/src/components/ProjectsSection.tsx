@@ -59,8 +59,17 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
       style={{ top: `${96 + index * 28}px` }}
     >
       <motion.div
-        style={{ scale, transformOrigin: 'top center', background: '#0C0C0C', borderRadius }}
-        className="h-full border-2 border-[#D7E2EA] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6"
+        style={{
+          scale,
+          transformOrigin: 'top center',
+          borderRadius,
+          background: 'rgba(18, 18, 20, 0.72)',
+          backdropFilter: 'blur(24px) saturate(140%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(140%)',
+          border: '1px solid var(--border-strong)',
+          boxShadow: '0 32px 80px rgba(0, 0, 0, 0.55)',
+        }}
+        className="h-full p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6"
       >
         {/* Top row */}
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -143,17 +152,14 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]
-        -mt-10 sm:-mt-12 md:-mt-14 z-10 relative
-        px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 md:pt-32 pb-20"
-      style={{ background: '#0C0C0C' }}
+      className="relative z-10 px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 md:pt-32 pb-20"
     >
       <FadeIn delay={0} y={40}>
         <h2
           className="hero-heading font-black uppercase leading-none tracking-tight text-center mb-16 sm:mb-20 md:mb-24"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Project
+          Projects
         </h2>
       </FadeIn>
 

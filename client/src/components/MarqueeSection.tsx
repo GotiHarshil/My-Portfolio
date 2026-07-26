@@ -50,8 +50,15 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden"
-      style={{ background: '#0C0C0C' }}
+      aria-label="Technologies I work with"
+      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden relative"
+      style={{
+        // Feather both edges so tiles dissolve into the page instead of hard-cutting
+        maskImage:
+          'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)',
+        WebkitMaskImage:
+          'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)',
+      }}
     >
       {/* Row 1 — moves right */}
       <div

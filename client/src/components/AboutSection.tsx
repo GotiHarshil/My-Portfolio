@@ -43,7 +43,6 @@ export default function AboutSection() {
       id="about"
       className="relative min-h-screen flex flex-col items-center justify-center
         px-5 sm:px-8 md:px-10 py-20"
-      style={{ background: '#0C0C0C' }}
     >
       {/* Corner decorative images */}
       {CORNER_IMGS.map((img) => (
@@ -65,8 +64,13 @@ export default function AboutSection() {
 
         <AnimatedText
           text={ABOUT_TEXT}
-          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px]"
-          style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' } as CSSProperties}
+          className="font-medium text-center leading-relaxed max-w-[560px]"
+          style={
+            {
+              fontSize: 'clamp(1rem, 2vw, 1.35rem)',
+              color: 'var(--text-primary)',
+            } as CSSProperties
+          }
         />
       </div>
 
