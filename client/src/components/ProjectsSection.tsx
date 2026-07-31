@@ -55,7 +55,7 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
   return (
     <div
       ref={ref}
-      className="h-[85vh] sticky"
+      className="h-auto sm:h-[85vh] sticky mb-5 sm:mb-0"
       style={{ top: `${96 + index * 28}px` }}
     >
       <motion.div
@@ -68,6 +68,7 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
           WebkitBackdropFilter: 'blur(24px) saturate(140%)',
           border: '1px solid var(--border-strong)',
           boxShadow: '0 32px 80px rgba(0, 0, 0, 0.55)',
+          overflow: 'hidden',
         }}
         className="h-full p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6"
       >
@@ -76,7 +77,7 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
           <div className="flex items-center gap-4 md:gap-6">
             <span
               className="font-black text-[#D7E2EA] leading-none"
-              style={{ fontSize: 'clamp(2.5rem, 8vw, 120px)' }}
+              style={{ fontSize: 'clamp(2rem, 8vw, 120px)' }}
             >
               {project.num}
             </span>
@@ -107,38 +108,34 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
           )}
         </div>
 
-        {/* Bottom row — image grid */}
-        <div className="flex gap-3 sm:gap-4 flex-1 min-h-0">
-          {/* Left col — 40% */}
-          <div className="flex flex-col gap-3 sm:gap-4" style={{ width: '40%' }}>
+        {/* Bottom row — image grid.
+            Mobile: 3 images stacked full-width so object-cover crops evenly.
+            sm+: original 40/60 two-column editorial split. */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-1 min-h-0">
+          {/* Left col — full width on mobile, 40% on sm+ */}
+          <div className="flex flex-col gap-3 sm:gap-4 w-full sm:w-[40%]">
             <img
               src={project.col1Top}
               alt=""
               loading="lazy"
-              className="w-full object-cover"
-              style={{
-                height: 'clamp(130px, 16vw, 230px)',
-                borderRadius,
-              }}
+              className="w-full object-cover aspect-[8/5] sm:aspect-auto sm:h-[clamp(130px,16vw,230px)]"
+              style={{ borderRadius }}
             />
             <img
               src={project.col1Bottom}
               alt=""
               loading="lazy"
-              className="w-full object-cover flex-1"
-              style={{
-                height: 'clamp(160px, 22vw, 340px)',
-                borderRadius,
-              }}
+              className="w-full object-cover aspect-[8/5] sm:aspect-auto sm:h-[clamp(160px,22vw,340px)] sm:flex-1"
+              style={{ borderRadius }}
             />
           </div>
-          {/* Right col — 60% */}
-          <div style={{ width: '60%' }}>
+          {/* Right col — full width on mobile, 60% on sm+ */}
+          <div className="w-full sm:w-[60%]">
             <img
               src={project.col2}
               alt=""
               loading="lazy"
-              className="w-full h-full object-cover"
+              className="w-full object-cover aspect-video sm:h-full"
               style={{ borderRadius }}
             />
           </div>
