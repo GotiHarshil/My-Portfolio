@@ -26,4 +26,22 @@ const sendContactNotification = async ({ name, email, subject, message }) => {
   });
 };
 
-module.exports = { sendContactNotification };
+const sendVisitNotification = async ({ ip, path, referrer, userAgent }) => {
+  const to = process.env.CONTACT_RECEIVER_EMAIL || process.env.EMAIL_USER;
+
+  await transporter.sendMail({
+    from: `"Portfolio Visitor Alert" <${process.env.EMAIL_USER}>`,
+    to,
+    subject: "New visitor on your portfolio",
+    text: `IP: ${ip}\nPath: ${path}\nReferrer: ${referrer}\nUser-Agent: ${userAgent}\nTime: ${new Date().toISOString()}`,
+    html: `
+      <p><strong>IP:</strong> ${ip}</p>
+      <p><strong>Path:</strong> ${path}</p>
+      <p><strong>Referrer:</strong> ${referrer}</p>
+      <p><strong>User-Agent:</strong> ${userAgent}</p>
+      <p><strong>Time:</strong> ${new Date().toISOString()}</p>
+    `,
+  });
+};
+
+module.exports = { sendContactNotification, sendVisitNotification };

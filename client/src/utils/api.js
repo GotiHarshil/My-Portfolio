@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_URL || '/api';
-
+// Vite exposes env vars on import.meta.env (VITE_ prefix only) — `process`
+// does not exist in the browser bundle.
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "/api",
+  baseURL: import.meta.env.VITE_API_URL || "/api",
   timeout: 10000,
 });
 
@@ -27,5 +27,14 @@ export const fetchCertifications = () => API.get("/certifications");
 
 // ── Contact ──
 export const submitContact = (data) => API.post("/contact", data);
+
+// ── Visit ──
+export const logVisit = () =>
+  API.get("/visit", {
+    params: {
+      path: window.location.pathname + window.location.hash,
+      referrer: document.referrer || "",
+    },
+  });
 
 export default API;

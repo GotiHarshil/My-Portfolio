@@ -7,6 +7,8 @@ require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const connectDB = require("./config/db");
 const logVisitor = require("./middleware/visitorLogger");
+const { getClientIp, getVisitedPath, getReferrer } = logVisitor;
+const notifyIfNewVisitor = require("./services/visitNotifier");
 
 // Route imports
 const profileRoutes = require("./routes/profileRoutes");
@@ -43,7 +45,17 @@ app.get("/api/health", (req, res) => {
 });
 
 // ─── Visit logging ───
-app.get("/api/visit", logVisitor, (req, res) => {
+app.get("/api/visit", logVisitor, async (req, res) => {
+  try {
+    await notifyIfNewVisitor({
+      ip: getClientIp(req),
+      path: getVisitedPath(req),
+      referrer: getReferrer(req),
+      userAgent: req.headers["user-agent"] || "-",
+    });
+  } catch (err) {
+    console.error("Visit notification failed:", err.message);
+  }
   res.status(204).end();
 });
 

@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { logVisit } from './utils/api'
 import SmoothScroll from './components/ui/SmoothScroll'
 import AmbientGlow from './components/ui/AmbientGlow'
 import SiteNav from './components/SiteNav'
@@ -10,6 +12,14 @@ import ProjectsSection from './components/ProjectsSection'
 import ContactSection from './components/ContactSection'
 
 export default function App() {
+  // Ping the server once per browser session so a visit gets logged (and
+  // emailed, at most once a day per IP). Never let a failure surface.
+  useEffect(() => {
+    if (sessionStorage.getItem('visit-logged')) return
+    sessionStorage.setItem('visit-logged', '1')
+    logVisit().catch(() => {})
+  }, [])
+
   return (
     <SmoothScroll>
       <div
