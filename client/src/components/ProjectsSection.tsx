@@ -31,14 +31,14 @@ const PROJECTS: ProjectData[] = [
   {
     num: '02',
     category: 'Personal',
-    name: 'Accommodation Booking Platform',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
-    buttonLabel: '',
-    buttonHref: '',
+    name: 'Color Couture — 3D Luxury Watch Store',
+    tags: ['React', 'Vite', 'Three.js', 'GSAP', 'Express', 'MongoDB'],
+    buttonLabel: 'Live Project',
+    buttonHref: 'https://color-couture.vercel.app',
     // TODO: replace with real screenshots
-    col1Top: 'https://placehold.co/400x230/0C0C0C/BBCCD7?text=Property+Search',
-    col1Bottom: 'https://placehold.co/400x340/0C0C0C/BBCCD7?text=Booking+Flow',
-    col2: 'https://placehold.co/600x600/0C0C0C/BBCCD7?text=Property+Detail',
+    col1Top: 'https://placehold.co/400x230/0C0C0C/BBCCD7?text=3D+Watch+Viewer',
+    col1Bottom: 'https://placehold.co/400x340/0C0C0C/BBCCD7?text=Collection',
+    col2: 'https://placehold.co/600x600/0C0C0C/BBCCD7?text=Book+Appointment',
   },
 ]
 
